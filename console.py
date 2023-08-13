@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         class_id = args[2]
         # manipulate trailling args
         if class_id and ' ' in class_id:
-            class_id = class_id.partition("  ")[0]
+            class_id = class_id.partition(" ")[0]
         if not class_name:
             print("** class name missing **")
             return
@@ -137,11 +137,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         if not class_id:
-            print("** class doesn't exist **")
+            print("** instance id missing **")
             return
         key = class_name + "." + class_id
         try:
-            print(storage._FileSotorage__objects[key])
+            print(storage._FileStorage__objects[key])
         except KeyError:
             print("** no instance found **")
 
@@ -181,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """display the string representation
-        of all instances or an instance
+        of all instances or an instance of a specifiec class
         """
         print_list = []
         if arg:
@@ -195,6 +195,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             for key, value in storage._FileStorage__objects.items():
                 print_list.append(str(value))
+
+        print(print_list)
 
     def help_all(self):
         """ Help information for the all command """
