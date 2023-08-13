@@ -215,7 +215,7 @@ class HBNBCommand(cmd.Cmd):
         """ count num of class instances """
         print("Usage: count <class_name>")
 
-    def do_update(self, arg):
+    def do_update(self, args):
         """ Updates a certain object with new info """
         c_name = c_id = att_name = att_val = kwargs = ''
 
