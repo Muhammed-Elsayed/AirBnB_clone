@@ -14,12 +14,19 @@ from models.base_model import BaseModel
 
 
 class Test_constructor(unittest.TestCase):
+
+    obj = BaseModel()
+    obj.name = "Model Name"
+    obj.my_number = 2
+
     
     def test_consturctor_with_no_kwargs(self):
-        obj = BaseModel()
-        self.assertIsInstance(obj.id, str)
-        self.assertIsInstance(obj.created_at, datetime)
-        self.assertIsInstance(obj.updated_at, datetime)
+        self.assertIsInstance(self.obj, BaseModel)
+        self.assertIsInstance(self.obj.id, str)
+        self.assertIsInstance(self.obj.created_at, datetime)
+        self.assertIsInstance(self.obj.updated_at, datetime)
+        self.assertEqual(self.obj.name, "Model Name")
+        self.assertEqual(self.obj.my_number, 2)
 
     def test_kwargs_constructor(self):
             
@@ -30,22 +37,15 @@ class Test_constructor(unittest.TestCase):
             'name': 'Test Model'
         }
         obj = BaseModel(**data)
+
+        self.assertIsInstance(self.obj, BaseModel)
+        self.assertIsInstance(self.obj.id, str)
+        self.assertIsInstance(self.obj.created_at, datetime)
+        self.assertIsInstance(self.obj.updated_at, datetime)
+
         self.assertEqual(obj.id, 'some_id')
         self.assertEqual(obj.name, 'Test Model')
         self.assertIsInstance(obj.created_at, datetime)
         self.assertIsInstance(obj.updated_at, datetime)
-        
-
-
-
-class TestBaseModel_str_method(unittest.TestCase):
-    
-    def first_test(self):
-        obj = BaseModel()
-        obj.id = 1
-
-        string = "[BaseModel] ({}) {}".format(obj.id, obj.__dict__)
-        self.assertEqual(str(obj), string)
-
-
-
+        self.assertEqual(self.obj.name, "Model Name")
+        self.assertEqual(self.obj.my_number, 2)
