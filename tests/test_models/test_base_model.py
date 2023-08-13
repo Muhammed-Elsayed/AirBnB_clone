@@ -58,6 +58,6 @@ class Test_base_model(unittest.TestCase):
         self.assertDictEqual(expected_dict, to_dict)
 
     def printing_str_formats(self):
-        expected_str = f"[{self.__class__.__name__}]\
-                       {self.id}) <{self.__dict__}>"
+        expected_str = f"[{self.obj.__class__.__name__}]\
+                       {self.obj.id}) <{self.obj.__dict__}>"
         self.assertEqual(expected_str, self.obj.__str__())
