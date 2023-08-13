@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from datetime import datetime
-from uuid import uuid
+import uuid 
 
 
 """python base_model module used as a parent class for the comming classed"""
@@ -27,7 +27,7 @@ class BaseModel:
 
     """represinting the object in the form of str"""
     def __str__(self):
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
 
     """should be called when any change occured to the obj """
     def save(self):
