@@ -14,7 +14,6 @@ class Test_base_model(unittest.TestCase):
     obj.name = "Model Name"
     obj.my_number = 2
 
-    
     def test_consturctor_with_no_kwargs(self):
         self.assertIsInstance(self.obj, BaseModel)
         self.assertIsInstance(self.obj.id, str)
@@ -24,7 +23,6 @@ class Test_base_model(unittest.TestCase):
         self.assertEqual(self.obj.my_number, 2)
 
     def test_kwargs_constructor(self):
-            
         data = {
             'id': 'some_id',
             'created_at': '2023-08-13T12:34:56.789',
@@ -59,10 +57,7 @@ class Test_base_model(unittest.TestCase):
         expected_dict["created_at"] = self.base.created_at.isoformat()
         self.assertDictEqual(expected_dict, to_dict)
 
-    
     def printing_str_formats(self):
-        expected_str = f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
+        expected_str = f"[{self.__class__.__name__}]\
+                       {self.id}) <{self.__dict__}>"
         self.assertEqual(expected_str, self.obj.__str__)
-
-
-        
