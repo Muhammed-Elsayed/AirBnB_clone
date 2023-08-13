@@ -11,6 +11,7 @@ class BaseModel:
     """BaseModel Class"""
     def __init__(self, *args, **kwargs):
         """used to initialize the object and to covert dict to its obj"""
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
