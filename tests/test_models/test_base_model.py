@@ -13,6 +13,8 @@ class Test_base_model(unittest.TestCase):
     """test class for base module"""
 
     obj = BaseModel()
+    base = BaseModel()
+
     obj.name = "Model Name"
     obj.my_number = 2
 
@@ -53,17 +55,16 @@ class Test_base_model(unittest.TestCase):
         """
         create an instance of class using kwargs
         """
-        my_obj_json = self.obj.to_dict()
-        new_obj = BaseModel(**my_obj_json)
-        
-        self.assertIsInstance(new_obj, BaseModel)
-        self.assertIsInstance(new_obj.id, str)
-        self.assertIsInstance(new_obj.created_at, datetime)
-        self.assertIsInstance(new_obj.updated_at, datetime)
-        self.assertEqual(new_obj.name, "Model Name")
-        self.assertEqual(new_obj.my_number, 2)
-        self.assertNotEqual(new_obj, self.obj)
-        self.assertDictEqual(new_obj.__dict__, self.obj.__dict__)
+        my_base_json = self.base.to_dict()
+        new_base = BaseModel(**my_base_json)
+        self.assertIsInstance(new_base, BaseModel)
+        self.assertIsInstance(new_base.id, str)
+        self.assertIsInstance(new_base.created_at, datetime)
+        self.assertIsInstance(new_base.updated_at, datetime)
+        self.assertEqual(new_base.name, "My First Model")
+        self.assertEqual(new_base.my_number, 2)
+        self.assertNotEqual(new_base, self.base)
+        self.assertDictEqual(new_base.__dict__, self.base.__dict__)
 
     def test_save(self):
         """testing the save function"""
