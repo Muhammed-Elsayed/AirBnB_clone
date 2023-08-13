@@ -60,4 +60,4 @@ class Test_base_model(unittest.TestCase):
     def printing_str_formats(self):
         expected_str = f"[{self.__class__.__name__}]\
                        {self.id}) <{self.__dict__}>"
-        self.assertEqual(expected_str, self.obj.__str__)
+        self.assertEqual(expected_str, self.obj.__str__())
