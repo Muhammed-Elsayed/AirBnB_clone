@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 from datetime import datetime
-import uuid 
+import uuid
 import models
-
 
 
 """python base_model module used as a parent class for the comming classed"""

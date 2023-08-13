@@ -62,4 +62,11 @@ class Test_base_model(unittest.TestCase):
         self.assertEqual(before_the_update, After_the_update)
 
 
-
+    def to_dict(self):
+        to_dict = self.obj.to_dict()
+        expected_dict = self.obj.to_dict()
+        expected_dict["__class__"] = self.base.__class__.__name__
+        expected_dict["updated_at"] = self.base.updated_at.isoformat()
+        expected_dict["created_at"] = self.base.created_at.isoformat()
+        self.assertDictEqual(expected_dict, to_dict)
+        
