@@ -2,15 +2,10 @@
 """test cases for the base_module module"""
 
 
-import os
 import models
 import unittest
 from datetime import datetime
-from time import sleep
 from models.base_model import BaseModel
-
-
-
 
 
 class Test_base_model(unittest.TestCase):
@@ -50,17 +45,11 @@ class Test_base_model(unittest.TestCase):
         self.assertEqual(self.obj.name, "Model Name")
         self.assertEqual(self.obj.my_number, 2)
 
-
-
-
-
-
     def test_save(self):
         before_the_update = self.obj.updated_at
         self.obj.save()
         After_the_update = self.obj.updated_at
-        self.assertEqual(before_the_update, After_the_update)
-
+        self.assertNotEqual(before_the_update, After_the_update)
 
     def to_dict(self):
         to_dict = self.obj.to_dict()
@@ -69,4 +58,11 @@ class Test_base_model(unittest.TestCase):
         expected_dict["updated_at"] = self.base.updated_at.isoformat()
         expected_dict["created_at"] = self.base.created_at.isoformat()
         self.assertDictEqual(expected_dict, to_dict)
+
+    
+    def printing_str_formats(self):
+        expected_str = f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
+        self.assertEqual(expected_str, self.obj.__str__)
+
+
         
