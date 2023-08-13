@@ -2,6 +2,7 @@
 """Airbnb clone file storage"""
 import json
 
+
 class FileStorage:
     """file storage class"""
     __file_path = "file.json"
@@ -26,7 +27,7 @@ class FileStorage:
 
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             json.dump(dict_objects, f)  # convert dict into json
-    
+
     def reload(self):
         """Loads storage dictionary from file"""
         from models.base_model import BaseModel
@@ -47,6 +48,6 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
