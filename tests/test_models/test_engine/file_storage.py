@@ -19,7 +19,7 @@ class Testing_file_storage(unittest.TestCase):
         old_dict = self.file_storage_object.all().copy()
 
         new_base_model_object = BaseModel()
-        self.file_storage_object.new()
+        self.file_storage_object.new(new_base_model_object)
 
         self.file_storage_object.save()
 
@@ -27,8 +27,8 @@ class Testing_file_storage(unittest.TestCase):
 
         count_of_objects_after_update = len(self.file_storage_object.all())
 
-        self.assertEqual(count_of_objects_before_update,
-                         count_of_objects_after_update + 1)
+        self.assertEqual(count_of_objects_before_update + 1,
+                         count_of_objects_after_update)
 
         obj_key = f"BaseModel.{new_base_model_object.id}"
         self.assertIn(obj_key, self.file_storage_object.all())
