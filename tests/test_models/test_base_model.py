@@ -13,7 +13,7 @@ from models.base_model import BaseModel
 
 
 
-class Test_constructor(unittest.TestCase):
+class Test_base_model(unittest.TestCase):
 
     obj = BaseModel()
     obj.name = "Model Name"
@@ -49,3 +49,17 @@ class Test_constructor(unittest.TestCase):
         self.assertIsInstance(obj.updated_at, datetime)
         self.assertEqual(self.obj.name, "Model Name")
         self.assertEqual(self.obj.my_number, 2)
+
+
+
+
+
+
+    def test_save(self):
+        before_the_update = self.obj.updated_at
+        self.obj.save()
+        After_the_update = self.obj.updated_at
+        self.assertEqual(before_the_update, After_the_update)
+
+
+
