@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
+import models
 
 
 """python base_model module used as a parent class for the comming classed"""
@@ -24,14 +25,16 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
+            models.storage.new(self)
 
     """represinting the object in the form of str"""
     def __str__(self):
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
 
     """should be called when any change occured to the obj """
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     """updating __dict__"""
     def to_dict(self):
