@@ -9,12 +9,15 @@ from models.base_model import BaseModel
 
 
 class Test_base_model(unittest.TestCase):
+    """test class for base module"""
 
     obj = BaseModel()
     obj.name = "Model Name"
     obj.my_number = 2
 
     def test_consturctor_with_no_kwargs(self):
+        """testing constructor without kwargs"""
+        
         self.assertIsInstance(self.obj, BaseModel)
         self.assertIsInstance(self.obj.id, str)
         self.assertIsInstance(self.obj.created_at, datetime)
@@ -23,6 +26,8 @@ class Test_base_model(unittest.TestCase):
         self.assertEqual(self.obj.my_number, 2)
 
     def test_kwargs_constructor(self):
+        """testing constructor with kwargs"""
+
         data = {
             'id': 'some_id',
             'created_at': '2023-08-13T12:34:56.789',
@@ -44,12 +49,24 @@ class Test_base_model(unittest.TestCase):
         self.assertEqual(self.obj.my_number, 2)
 
     def test_save(self):
+        """testing the save function"""
+
         before_the_update = self.obj.updated_at
         self.obj.save()
         After_the_update = self.obj.updated_at
         self.assertNotEqual(before_the_update, After_the_update)
+    
+    def printing_str_formats(self):
+        """testing the str function"""
+
+        expected_str = f"[{self.obj.__class__.__name__}]\
+                       {self.obj.id}) <{self.base.__dict__}>"
+        self.assertEqual(expected_str, self.obj.__str__())
+
 
     def to_dict(self):
+        """testing to_dict function"""
+
         to_dict = self.obj.to_dict()
         expected_dict = self.obj.to_dict()
         expected_dict["__class__"] = self.obj.__class__.__name__
@@ -57,7 +74,3 @@ class Test_base_model(unittest.TestCase):
         expected_dict["created_at"] = self.obj.created_at.isoformat()
         self.assertDictEqual(expected_dict, to_dict)
 
-    def printing_str_formats(self):
-        expected_str = f"[{self.obj.__class__.__name__}]\
-                       {self.obj.id}) <{self.obj.__dict__}>"
-        self.assertEqual(expected_str, self.obj.__str__())
