@@ -52,9 +52,9 @@ class Test_base_model(unittest.TestCase):
     def to_dict(self):
         to_dict = self.obj.to_dict()
         expected_dict = self.obj.to_dict()
-        expected_dict["__class__"] = self.base.__class__.__name__
-        expected_dict["updated_at"] = self.base.updated_at.isoformat()
-        expected_dict["created_at"] = self.base.created_at.isoformat()
+        expected_dict["__class__"] = self.obj.__class__.__name__
+        expected_dict["updated_at"] = self.obj.updated_at.isoformat()
+        expected_dict["created_at"] = self.obj.created_at.isoformat()
         self.assertDictEqual(expected_dict, to_dict)
 
     def printing_str_formats(self):
