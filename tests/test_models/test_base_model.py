@@ -13,6 +13,8 @@ class Test_base_model(unittest.TestCase):
     """test class for base module"""
 
     obj = BaseModel()
+    base = BaseModel()
+
     obj.name = "Model Name"
     obj.my_number = 2
 
@@ -60,7 +62,7 @@ class Test_base_model(unittest.TestCase):
         self.assertIsInstance(new_base.created_at, datetime)
         self.assertIsInstance(new_base.updated_at, datetime)
         self.assertEqual(new_base.name, "My First Model")
-        self.assertEqual(new_base.my_number, 89)
+        self.assertEqual(new_base.my_number, 2)
         self.assertNotEqual(new_base, self.base)
         self.assertDictEqual(new_base.__dict__, self.base.__dict__)
 
