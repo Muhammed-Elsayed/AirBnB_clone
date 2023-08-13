@@ -55,6 +55,7 @@ class Test_base_model(unittest.TestCase):
         """
         my_obj_json = self.obj.to_dict()
         new_obj = BaseModel(**my_obj_json)
+        
         self.assertIsInstance(new_obj, BaseModel)
         self.assertIsInstance(new_obj.id, str)
         self.assertIsInstance(new_obj.created_at, datetime)
