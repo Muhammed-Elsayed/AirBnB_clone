@@ -1,0 +1,14 @@
+footer {
+	background-color: white;
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	border-top: 1px solid #CCCCCC;
+	bottom: 0;
+}
+
+p {
+	text-align: center;  /*It's used to control the horizontal align*/
+	padding: 6px;
+
+}
